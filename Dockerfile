@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 
-RUN command apt-get update && apt-get install -y \
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y \
     libpq-dev \
     curl \
     gnupg \
