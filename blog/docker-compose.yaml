@@ -1,2 +1,7 @@
 # Définir cette configuration Compose afin de lancer l'application
 # The Computer Club's Blog en production.
+
+# docker run -dit --name blog --network blog-net -p 8000:8000 -v "C:\Users\haris\OneDrive\Bureau\ESGI\Git Docker\DockerProject:/ws" ubuntublog
+#docker exec -it some-postgres bash
+#docker network create blog-net
+#docker run --name some-postgres --network blog-net -e POSTGRES_PASSWORD=mysecretpassword -d postgres
