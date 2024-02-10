@@ -14,14 +14,14 @@ Application cliente (SPA) affichant un catalogue de séries TV.
 
 ## Variables d'environnement
 
-| Nom                 | Description                                     | Obligatoire ? | Exemple               |
-|---------------------|-------------------------------------------------|---------------|-----------------------|
-| API_BASE_URL        | L'URL de base de l'API Make Me Watch (serveur). | Oui           | http://localhost:3000 |
+| Nom          | Description                                     | Obligatoire ? | Exemple               |
+| ------------ | ----------------------------------------------- | ------------- | --------------------- |
+| API_BASE_URL | L'URL de base de l'API Make Me Watch (serveur). | Oui           | http://localhost:3000 |
 
 ## Ports
 
 | Environnement            | Valeur par défaut |
-|--------------------------|-------------------|
+| ------------------------ | ----------------- |
 | Développement            | 5173              |
 | Pré-production (preview) | 4173              |
 | Production               | 3000              |
