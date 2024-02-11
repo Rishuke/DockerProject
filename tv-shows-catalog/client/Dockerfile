@@ -1,5 +1,11 @@
 # Créer un Dockerfile pour cette application en mode production
-# FROM node:latest
+# FROM nginx:latest
+
+# COPY ./build /usr/share/nginx/html
+
+# COPY ./default.conf /etc/nginx/conf.d/default.conf
+
+# RUN nginx -g daemon off;
 
 FROM node:latest
 
@@ -13,14 +19,6 @@ COPY . .
 
 RUN npm run build
 
-CMD ["npm","run","preview"]
+CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0"]
 
-# FROM nginx:latest
 
-# COPY --from=build client /usr/share/nginx/html
-
-# COPY ./default.conf /etc/nginx/conf.d/default.conf
-
-# EXPOSE 80
-
-# CMD ["nginx", "-g", "daemon off;"]
