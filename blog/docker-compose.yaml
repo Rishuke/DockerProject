@@ -1,7 +1,39 @@
 # Définir cette configuration Compose afin de lancer l'application
 # The Computer Club's Blog en production.
 
-# docker run -dit --name blog --network blog-net -p 8000:8000 -v "C:\Users\haris\OneDrive\Bureau\ESGI\Git Docker\DockerProject:/ws" ubuntublog
-#docker exec -it some-postgres bash
-#docker network create blog-net
-#docker run --name some-postgres --network blog-net -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+version: '3.7'
+
+services:
+  db:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: blog
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: thomas
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - list_network
+
+  rblog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: 'postgres://thomas:admin@db:5432/blog'
+      ROCKET_ADDRESS: '0.0.0.0'
+    depends_on:
+      - db
+    networks:
+      - list_network
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  list_network:
