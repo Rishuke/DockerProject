@@ -8,7 +8,6 @@ services:
     image: nodeclient
     ports:
       - "4173:4173"
-      - "80:80"
     networks:
       - makeMeWatchNetwork
   apiMakeMeWatch:
