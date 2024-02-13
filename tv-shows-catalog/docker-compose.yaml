@@ -7,7 +7,7 @@ services:
   website:
     image: nodeclient
     ports:
-      - "3000:3000"
+      - "3000:4173"
     networks:
       - makeMeWatchNetwork
   apiMakeMeWatch:
