@@ -4,6 +4,7 @@ COPY . /usr/src/blog
 
 WORKDIR /usr/src/blog
 
+#All packages needed
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     libpq-dev \
