@@ -1,2 +1,25 @@
 # Définir cette configuration Compose afin de lancer l'application
 # Make Me Watch en production.
+
+version: "3"
+
+services:
+  api:
+    image: nodeserver
+    ports:
+      - "3000:3000"
+    networks:
+      - mynetwork
+
+  website:
+    image: nodeclient
+    ports:
+      - "4173:4173"
+    networks:
+      - mynetwork
+    environment:
+      - API_URL=http://localhost:3000
+
+networks:
+  mynetwork:
+    driver: bridge
