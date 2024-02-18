@@ -7,5 +7,3 @@ custom_type_derives = ["diesel::query_builder::QueryId"]
 
 [migrations_directory]
 dir = "migrations"
-
-
