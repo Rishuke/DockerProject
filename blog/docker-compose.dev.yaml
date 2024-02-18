@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: thomas
     volumes:
       - db_data:/var/lib/postgresql/data
-
+    #sql
 volumes:
   db_data:
     driver: local
