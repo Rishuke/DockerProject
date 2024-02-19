@@ -11,7 +11,7 @@ FROM node:latest
 
 COPY . .
 
-WORKDIR ./client
+WORKDIR .
 
 RUN npm install
 
