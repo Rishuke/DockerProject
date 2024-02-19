@@ -1,13 +1,11 @@
 # Créer un Dockerfile pour cette application en mode production
 FROM node:latest
 
-WORKDIR ./server
+COPY . .
 
-COPY package*.json ./
+WORKDIR .
 
 RUN npm install
-
-COPY . .
 
 RUN npm run build
 
