@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y \
     && pecl install apcu \
     && docker-php-ext-enable apcu \
     && rm -rf /var/lib/apt/lists/*
-
+    
 RUN if [ "$APP_ENV" != "prod" ]; then \
         curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin; \
     fi
