@@ -5,6 +5,9 @@ version: "3"
 
 services:
   website:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
     image: nodeclient
     ports:
       - "3000:4173"
@@ -12,6 +15,9 @@ services:
       - makeMeWatchNetwork
   apiMakeMeWatch:
     image: nodeserver
+    build:
+      context: ./server
+      dockerfile: Dockerfile
     networks:
       - makeMeWatchNetwork
 
