@@ -10,7 +10,7 @@ services:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - "3000:4173"
+      - "8002:4173"
     networks:
       - makeMeWatchNetwork
 

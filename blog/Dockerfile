@@ -16,4 +16,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
 ENV PATH="/root/.cargo/bin:${PATH}"
+COPY entrypoint.sh /usr/src/blog/entrypoint.sh
+RUN chmod +x /usr/src/blog/entrypoint.sh
+ENTRYPOINT ["/usr/src/blog/entrypoint.sh"]
 
