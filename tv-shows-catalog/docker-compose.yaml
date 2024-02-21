@@ -16,4 +16,4 @@ services:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - 0:3000
+      - ${PORT}:3000
