@@ -7,14 +7,24 @@
 
 # RUN nginx -g daemon off;
 
-FROM node:latest
+FROM node:lts-alpine as build-stage
+
+WORKDIR ./client
+
+ENV API_BASE_URL=http://apiMakeMeWatch:3000
 
 COPY . .
-
-WORKDIR .
 
 RUN npm install
 
 RUN npm run build
 
-CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0"]
+FROM node:lts-alpine
+
+WORKDIR ./client
+
+COPY --from=build-stage client/build ./build
+COPY --from=build-stage client/package.json  .
+COPY --from=build-stage client/node_modules ./node_modules
+
+CMD ["node", "build/index.js","--", "--host", "0.0.0.0"]

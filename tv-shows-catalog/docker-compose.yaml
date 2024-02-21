@@ -4,24 +4,16 @@
 version: "3"
 
 services:
+  apiMakeMeWatch:
+    image: nodeserver
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+
   website:
     image: nodeclient
     build:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - "8002:4173"
-    networks:
-      - makeMeWatchNetwork
-
-  apiMakeMeWatch:
-    image: nodeserver
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    networks:
-      - makeMeWatchNetwork
-
-networks:
-  makeMeWatchNetwork:
-    driver: bridge
+      - 0:3000

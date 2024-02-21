@@ -1,2 +1,13 @@
-node_modules
+.env*
+.es*
+.gitignore
+.npmrc
+.prettier*
+default.conf
+Dockerfile
+tsconfig.json
+viteconfig.ts
+.svelte-kit
+
 build
+node_modules

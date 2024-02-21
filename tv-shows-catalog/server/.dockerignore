@@ -1,2 +1,9 @@
-node_modules
+.env*
+.es*
+.gitignore
+.prettier*
+Dockerfile
+nest*
+
 dist
+node_modules
