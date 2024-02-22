@@ -8,6 +8,7 @@ Dockerfile
 tsconfig.json
 viteconfig.ts
 .svelte-kit
+package-lock.json
 
 build
 node_modules
