@@ -9,8 +9,6 @@
 
 FROM node:lts-alpine as build-stage
 
-WORKDIR ./client
-
 ENV API_BASE_URL=http://apiMakeMeWatch:3000
 
 COPY . .
@@ -19,12 +17,14 @@ RUN npm install
 
 RUN npm run build
 
+
+
 FROM node:lts-alpine
 
 WORKDIR ./client
 
-COPY --from=build-stage client/build ./build
-COPY --from=build-stage client/package.json  .
-COPY --from=build-stage client/node_modules ./node_modules
+COPY --from=build-stage /build ./build
+COPY --from=build-stage /package.json  .
+COPY --from=build-stage /node_modules ./node_modules
 
 CMD ["node", "build/index.js","--", "--host", "0.0.0.0"]
