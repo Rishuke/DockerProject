@@ -13,6 +13,7 @@ RUN cargo install diesel_cli --no-default-features --features postgres
 
 
 ENV PATH="/root/.cargo/bin:${PATH}"
+
 COPY entrypoint.sh /usr/src/blog/entrypoint.sh
 RUN chmod +x /usr/src/blog/entrypoint.sh
 ENTRYPOINT ["/usr/src/blog/entrypoint.sh"]
