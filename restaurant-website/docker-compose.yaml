@@ -5,20 +5,20 @@ version: '3.7'
 
 services:
   php:
-    build:
+    build: # On definis les paramètres de construction pour le service PHP en precisent le Dockerfile, dans le fichier courant "." indiqué par context
       context: .
       dockerfile: Dockerfile
-      args:
-        - APP_ENV=prod
-    volumes:
+      args: # On passe nos arguments au moment de la construction de l'image notamment la variable d'environnement indiqué par le fichier .env à la racine, pour pas qu'il sois écris en dur.
+        - APP_ENV=${APP_ENV}
+    volumes: # Indique que nous partageons le fichier du projet avec Docker
       - .:/usr/src/restaurant-website
 
-  nginx:
-    image: nginx:stable-alpine
-    ports:
+  nginx: # Service nginx
+    image: nginx:stable-alpine # On utilise l'image nginx:alpine (plus lègère)
+    ports: # On defini le port local a 8001
       - "8001:80"
     volumes:
-      - ./.docker/nginx/grilli.com.conf:/etc/nginx/conf.d/default.conf
-      - ./public:/usr/src/restaurant-website/public:ro
-    depends_on:
+      - ./.docker/nginx/grilli.com.conf:/etc/nginx/conf.d/default.conf # le fichier .conf du répertoire .docker/nginx, sera utilisé par le container.
+      - ./public:/usr/src/restaurant-website/public:ro # Les fichiers du répertoire public seront acceccibles a l'interieur du container en lecture seule (Read Only) 
+    depends_on: # Indique que ce service nginx dépend du service php, donc le service php sera lancé en premier.
       - php
